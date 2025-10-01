@@ -14,12 +14,14 @@
   },
 
   "postCreateCommand": [
-    "npm ci --include=dev || npm install --include=dev",
-    "cd projects/QuickStartTemplate-frontend && (npm ci --include=dev || npm install --include=dev)",
-    "cd projects/QuickStartTemplate-contracts/nft_mint_server && (npm ci --include=dev || npm install --include=dev)"
+    "bash -lc 'cd QuickStartTemplate && (npm ci --include=dev || npm install --include=dev)'",
+    "bash -lc 'cd QuickStartTemplate/projects/QuickStartTemplate-frontend && (npm ci --include=dev || npm install --include=dev)'",
+    "bash -lc 'cd QuickStartTemplate/projects/QuickStartTemplate-contracts/nft_mint_server && (npm ci --include=dev || npm install --include=dev)'"
   ],
 
-  "postAttachCommand": { "start": "npm run dev" },
+  "postAttachCommand": {
+    "start": "bash -lc 'cd QuickStartTemplate && npm run dev'"
+  },
 
   "customizations": {
     "vscode": {
