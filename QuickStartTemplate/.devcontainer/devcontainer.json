@@ -1,15 +1,29 @@
 {
   "name": "Algorand Quick Start Dev",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "forwardPorts": [5173, 3001],
+
+  "forwardPorts": [4001, 4002, 8980, 5173, 3001],
   "portsAttributes": {
-  "5173": { "onAutoForward": "openBrowser" },
-  "3001": { "onAutoForward": "notify", "visibility": "public" }
-},
-  "postCreateCommand": "npm ci || true",
-  "postAttachCommand": {
-    "start": "npm run dev:boot"
+    "4001": { "label": "algod" },
+    "4002": { "label": "kmd" },
+    "8980": { "label": "indexer" },
+    "5173": { "label": "Vite Frontend", "protocol": "http", "onAutoForward": "openBrowser" },
+    "3001": { "label": "Backend API", "protocol": "http", "onAutoForward": "notify", "visibility": "public" }
   },
+
+  "postCreateCommand": "bash -lc '\
+    npm ci || npm install; \
+    if [ -f projects/QuickStartTemplate-frontend/package.json ]; then cd projects/QuickStartTemplate-frontend && (npm ci || npm install) && cd -; fi; \
+    if [ -f projects/QuickStartTemplate-contracts/nft_mint_server/package.json ]; then cd projects/QuickStartTemplate-contracts/nft_mint_server && (npm ci || npm install) && cd -; fi; \
+    pip3 install py-algorand-sdk python-dotenv >/dev/null 2>&1 || true; \
+    pipx install algokit >/dev/null 2>&1 || true; \
+    pip install algokit-utils >/dev/null 2>&1 || true \
+  '",
+
+  "postAttachCommand": {
+    "start": "npm run dev"
+  },
+
   "customizations": {
     "vscode": {
       "extensions": [
