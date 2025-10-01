@@ -2,9 +2,7 @@
   "name": "Algorand Quick Start Dev",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
 
-  "containerEnv": {
-    "NPM_CONFIG_PRODUCTION": "false"
-  },
+  "containerEnv": { "NPM_CONFIG_PRODUCTION": "false" },
 
   "forwardPorts": [4001, 4002, 8980, 5173, 3001],
   "portsAttributes": {
@@ -15,18 +13,13 @@
     "3001": { "label": "Backend API", "protocol": "http", "onAutoForward": "notify", "visibility": "public" }
   },
 
-  "postCreateCommand": "bash -lc '\
-    npm ci --include=dev || npm install --include=dev; \
-    if [ -f projects/QuickStartTemplate-frontend/package.json ]; then cd projects/QuickStartTemplate-frontend && (npm ci --include=dev || npm install --include=dev) && cd -; fi; \
-    if [ -f projects/QuickStartTemplate-contracts/nft_mint_server/package.json ]; then cd projects/QuickStartTemplate-contracts/nft_mint_server && (npm ci --include=dev || npm install --include=dev) && cd -; fi; \
-    pip3 install py-algorand-sdk python-dotenv >/dev/null 2>&1 || true; \
-    pipx install algokit >/dev/null 2>&1 || true; \
-    pip install algokit-utils >/dev/null 2>&1 || true \
-  '",
+  "postCreateCommand": [
+    "npm ci --include=dev || npm install --include=dev",
+    "cd projects/QuickStartTemplate-frontend && (npm ci --include=dev || npm install --include=dev)",
+    "cd projects/QuickStartTemplate-contracts/nft_mint_server && (npm ci --include=dev || npm install --include=dev)"
+  ],
 
-  "postAttachCommand": {
-    "start": "npm run dev"
-  },
+  "postAttachCommand": { "start": "npm run dev" },
 
   "customizations": {
     "vscode": {
