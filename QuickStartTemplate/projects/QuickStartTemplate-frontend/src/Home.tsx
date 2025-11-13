@@ -1,5 +1,5 @@
 // src/Home.tsx
-// Redesigned landing UI for PALMFARM Algorand dApp
+// Redesigned landing UI for PALMFARM.AI Algorand dApp
 // Includes modern hero layout, gradient accents, and improved responsiveness.
 
 import React, { useState } from 'react'
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
       {/* ---------------- Navbar ---------------- */}
       <nav className="w-full backdrop-blur-lg bg-neutral-900/60 border-b border-neutral-800 px-6 py-4 flex items-center justify-between">
         <h1 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-          PALMFARM dApp
+          PALMFARM,AI dApp
         </h1>
 
         <button
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
           Empowering Carbon Smart Agriculture
         </h2>
         <p className="text-gray-400 max-w-2xl text-base md:text-lg leading-relaxed mb-8">
-          PALMFARM connects palm oil farmers, carbon markets, and investors on the Algorand blockchain.
+          PALMFARM.AI connects palm oil farmers, carbon markets, and investors on the Algorand blockchain.
           Tokenize your carbon credits, mint NFTs for supply-chain assets, and trade transparently.
         </p>
 
@@ -134,4 +134,3 @@ const Home: React.FC = () => {
 }
 
 export default Home
-
