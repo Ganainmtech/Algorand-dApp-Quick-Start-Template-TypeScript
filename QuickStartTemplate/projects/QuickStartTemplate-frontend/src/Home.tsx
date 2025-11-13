@@ -2,22 +2,17 @@
 // Redesigned landing UI for PALMFARM.AI Algorand dApp
 // Includes modern hero layout, gradient accents, and improved responsiveness.
 
-import React, { useState } from 'react'
 import { useWallet } from '@txnlab/use-wallet-react'
-import {
-  AiOutlineWallet,
-  AiOutlineSend,
-  AiOutlineStar,
-  AiOutlineDeploymentUnit,
-} from 'react-icons/ai'
+import React, { useState } from 'react'
+import { AiOutlineDeploymentUnit, AiOutlineSend, AiOutlineStar } from 'react-icons/ai'
 import { BsArrowUpRightCircle, BsWallet2 } from 'react-icons/bs'
 
 // Frontend modals
+import AppCalls from './components/AppCalls'
 import ConnectWallet from './components/ConnectWallet'
-import Transact from './components/Transact'
 import NFTmint from './components/NFTmint'
 import Tokenmint from './components/Tokenmint'
-import AppCalls from './components/AppCalls'
+import Transact from './components/Transact'
 
 const Home: React.FC = () => {
   const [openWalletModal, setOpenWalletModal] = useState(false)
@@ -40,7 +35,9 @@ const Home: React.FC = () => {
           onClick={() => setOpenWalletModal(true)}
           className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-600 to-emerald-500 hover:opacity-90 text-sm font-semibold text-white transition"
         >
-          <BsWallet2 className="text-lg" />
+          <span className="text-lg">
+            <BsWallet2 />
+          </span>
           <span>{activeAddress ? 'Wallet Connected' : 'Connect Wallet'}</span>
         </button>
       </nav>
@@ -51,8 +48,8 @@ const Home: React.FC = () => {
           Empowering Carbon Smart Agriculture
         </h2>
         <p className="text-gray-400 max-w-2xl text-base md:text-lg leading-relaxed mb-8">
-          PALMFARM.AI connects palm oil farmers, carbon markets, and investors on the Algorand blockchain.
-          Tokenize your carbon credits, mint NFTs for supply-chain assets, and trade transparently.
+          PALMFARM.AI connects palm oil farmers, carbon markets, and investors on the Algorand blockchain. Tokenize your carbon credits,
+          mint NFTs for supply-chain assets, and trade transparently.
         </p>
 
         <button
@@ -72,28 +69,44 @@ const Home: React.FC = () => {
               {
                 title: 'Send Payment',
                 desc: 'Transfer ALGO instantly on TestNet and understand wallet transactions.',
-                icon: <AiOutlineSend className="text-4xl text-green-400 mb-4" />,
+                icon: (
+                  <span className="text-4xl text-green-400 mb-4">
+                    <AiOutlineSend />
+                  </span>
+                ),
                 color: 'from-green-500 to-emerald-600',
                 action: () => setOpenPaymentModal(true),
               },
               {
                 title: 'Mint NFT',
                 desc: 'Upload an image and mint your unique carbon NFT on Algorand.',
-                icon: <AiOutlineStar className="text-4xl text-pink-400 mb-4" />,
+                icon: (
+                  <span className="text-4xl text-pink-400 mb-4">
+                    <AiOutlineStar />
+                  </span>
+                ),
                 color: 'from-pink-500 to-rose-600',
                 action: () => setOpenMintModal(true),
               },
               {
                 title: 'Create Token (ASA)',
                 desc: 'Generate Algorand Standard Assets for your farm or carbon credits.',
-                icon: <BsArrowUpRightCircle className="text-4xl text-purple-400 mb-4" />,
+                icon: (
+                  <span className="text-4xl text-purple-400 mb-4">
+                    <BsArrowUpRightCircle />
+                  </span>
+                ),
                 color: 'from-purple-500 to-indigo-600',
                 action: () => setOpenTokenModal(true),
               },
               {
                 title: 'Smart Contract Demo',
                 desc: 'Interact with a stateful contract to simulate real dApp operations.',
-                icon: <AiOutlineDeploymentUnit className="text-4xl text-amber-400 mb-4" />,
+                icon: (
+                  <span className="text-4xl text-amber-400 mb-4">
+                    <AiOutlineDeploymentUnit />
+                  </span>
+                ),
                 color: 'from-amber-500 to-orange-600',
                 action: () => setOpenAppCallsModal(true),
               },
