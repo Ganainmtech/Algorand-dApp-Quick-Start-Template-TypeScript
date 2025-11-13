@@ -1,14 +1,16 @@
 {
   "folders": [
     {
-      "path": "./",
-      "name": "ROOT"
+      "name": "ROOT",
+      "path": "."
     },
     {
-      "path": "./projects/QuickStartTemplate-contracts"
+      "name": "QuickStartTemplate-contracts",
+      "path": "projects/QuickStartTemplate-contracts"
     },
     {
-      "path": "./projects/QuickStartTemplate-frontend"
+      "name": "QuickStartTemplate-frontend",
+      "path": "projects/QuickStartTemplate-frontend"
     }
   ],
   "settings": {
